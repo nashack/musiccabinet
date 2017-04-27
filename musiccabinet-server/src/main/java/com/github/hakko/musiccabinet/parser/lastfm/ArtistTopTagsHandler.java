@@ -33,12 +33,13 @@ public class ArtistTopTagsHandler extends DefaultHandler {
 		NAME, COUNT;
 	}
 	
-	@Override
+        @Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) 
 	throws SAXException {
 		if (TAG_TOP_TAGS.equals(qName)) {
 			artistName = attributes.getValue(TAG_ARTIST);
 			sourceArtist = new Artist(artistName);
+                } else if (TAG_NAME.equals("tag")) { currentTag = new Tag();
 		} else if (TAG_NAME.equals(qName)) {
 			currentTag = new Tag();
 			state = NAME;
